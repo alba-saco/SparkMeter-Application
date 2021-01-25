@@ -20,10 +20,11 @@ class Pipeline:
         # added await keyword to sleep
         await asyncio.sleep(sleep_duration)
         # removed indent
-        logger.info("Slept for %s seconds", sleep_duration)
+        # formatted string properly
+        logger.info("Slept for %s seconds" % sleep_duration)
         start = datetime.now()
         # changed kwarg to kwargs
         await coro(*args, **kwargs)
         end = datetime.now()
         time_elapsed = (start - end).total_seconds()
-        logger.debug(f"Executed the coroutine for {time_elapsed} seconds")
+        logger.info(f"Executed the coroutine for {time_elapsed} seconds")
